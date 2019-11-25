@@ -1,5 +1,5 @@
 # react-redux-boilerplate
-Simple React Redux Boilerplate with all the basics that you need.
+Simple React Redux Boilerplate
 
 ## Available Scripts
 
@@ -16,4 +16,4 @@ Builds the app for production to the `build` folder
 
 
 
-Maintained by Alvaro
+Maintained by Alvaro :beer:
