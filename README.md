@@ -1,19 +1,29 @@
 # react-redux-boilerplate
 Simple React Redux Boilerplate
 
+<br>
 ## Available Scripts
 
-In the project directory, you can run:
+#### Install dependencies:
+##### `make run.install`
 
-### `npm start`
+----
+For running development environment, run in 2 different terminals:
 
-Runs the app in the development mode. 
-http://localhost:3000
+#### Run server:
+##### `make run.server`
+#### Run react:
+##### `make run.react`
+----
+#### Build project:
+##### `make run.build`
 
-### `npm run build`
+Builds the app for production into the `build` folder
 
-Builds the app for production to the `build` folder
+----
 
-
-
+#### Clean:
+##### `make run.clean`
+----
+</br>
 Maintained by Alvaro :beer:
