@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { Homepage, SignUp } from '../containers/Views';
+import { Route, Switch } from 'react-router-dom';
+import { Homepage } from '../containers/Views';
 import { connect } from 'react-redux';
 
 class Routes extends PureComponent{
@@ -19,10 +19,6 @@ class Routes extends PureComponent{
     return(
       <Switch>
         <Route exact path='/' component={Homepage} />
-        <Route path='/sign-up' render={({ location })=>(
-          this.getName() ? <Redirect to='/' />
-          : <SignUp />
-        )}/>
       </Switch>
     );
   }

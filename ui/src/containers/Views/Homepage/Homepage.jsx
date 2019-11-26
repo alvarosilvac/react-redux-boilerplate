@@ -1,74 +1,53 @@
-import React, { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as clientActions from '../../../actions/clientActions';
-import { routerActions } from 'react-router-redux';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMessage, increment} from '../../../actions/dataActions';
 
-class Homepage extends PureComponent{
+const Homepage = () => {
 
-  constructor(props){
-    super(props)
-    this.state={
-      register: false
-    }
+  const dispatch = useDispatch()
 
-    this.logOut = this.logOut.bind(this);
-    this.register = this.register.bind(this);
+  const count = useSelector(state => state.data.count)
+  const addCount = useCallback(
+    () => dispatch(increment()),
+    [dispatch]
+  )
+
+  const [tempMessage, setTempMessage] = useState("")
+  const message = useSelector(state => state.data.message)
+  const saveMessage = useCallback(
+    () => {
+      const _message = messageRef.current
+      dispatch(setMessage(_message))
+    }, [dispatch]
+  )
+  const messageRef = useRef()
+
+
+  const [name, setName] = useState("")
+
+  const handleInputName = (e) => {
+    setName(e.target.value)
   }
 
-  componentDidMount(){
-    if(this.props.client.name){
-      this.setState({
-        register: true
-      })
-    }
+  const handleInputMessage = (e) => {
+    setTempMessage(e.target.value)
+    messageRef.current = e.target.value
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if(prevProps.client.name && !this.props.client.name){
-      this.setState({
-        register: false
-      })
-    }
-  }
+  useEffect(() => {
+    console.log('I changed')
+  }, [name])
 
-  logOut(){
-    this.props.actions.client.logOut()
-  }
-
-  register(){
-    this.props.actions.router.push('/sign-up')
-  }
-
-  render(){
-    return(
-      <div>
-        { this.state.register ? 
-          <h3>Hi, Mr. {this.props.client.lastname}</h3> : 
-          <h3>User not registered!</h3> 
-        }
-        { this.state.register ?
-          <button onClick={this.logOut}>Log out</button> :
-          <button onClick={this.register}>Register</button>
-        }
-      </div>
-    )
-  }
+  return(
+    <>
+    <input type="text" onChange={handleInputName} value={name} />
+    <h6>Name: {name}</h6>
+    <input type="text" onChange={handleInputMessage} value={tempMessage} />
+    <h6>Message: {message}</h6>
+    <button onClick={saveMessage}>Submit Message</button>
+    <button onClick={addCount}>{count}</button>
+    </>
+  )
 }
 
-function mapStateToProps(state){
-  return{
-    client: state.client
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return{
-    actions:{
-      client: bindActionCreators(clientActions, dispatch),
-      router: bindActionCreators(routerActions, dispatch)
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+export default Homepage;

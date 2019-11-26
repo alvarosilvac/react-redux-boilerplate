@@ -1,4 +1,4 @@
-import client from './reducer_client';
+import data from './reducer_data';
 import { persistCombineReducers } from 'redux-persist';
 import { connectRouter } from 'connected-react-router';
 import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel1';
@@ -12,5 +12,5 @@ const config = {
 
 export default (history) => persistCombineReducers(config, {
   router: connectRouter(history),
-  client
+  data
 })

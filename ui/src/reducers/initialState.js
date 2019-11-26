@@ -1,6 +1,6 @@
 export default {
-  client:{
-    name: '',
-    lastname: ''
+  data:{
+    count: 0,
+    message: ''
   }
 }
