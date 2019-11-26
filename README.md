@@ -2,6 +2,7 @@
 Simple React Redux Boilerplate
 
 <br>
+
 ## Available Scripts
 
 #### Install dependencies:
