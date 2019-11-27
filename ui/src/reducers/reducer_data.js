@@ -14,6 +14,9 @@ export default function clientReducer(state = initialState.data, action){
         message: action.message
       })
 
+    case 'RESET_DATA':
+      return initialState.data
+
     default:
       return state
   }

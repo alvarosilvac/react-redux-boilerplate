@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setMessage, increment} from '../../../actions/dataActions';
+import { push } from 'connected-react-router';
 
 const Homepage = () => {
 
@@ -17,13 +18,29 @@ const Homepage = () => {
   const saveMessage = useCallback(
     () => {
       const _message = messageRef.current
-      dispatch(setMessage(_message))
+      if(!_message)
+        window.alert("No message to send!")
+      else
+        dispatch(setMessage(_message))
     }, [dispatch]
   )
   const messageRef = useRef()
 
-
   const [name, setName] = useState("")
+
+  const goTest = useCallback(
+    () => dispatch(push("test")),
+    [dispatch]
+  )
+
+  const resetData = useCallback(
+    () => {
+      setName("")
+      setTempMessage("")
+      dispatch({ type: 'RESET_DATA' })
+    },
+    [dispatch]
+  )
 
   const handleInputName = (e) => {
     setName(e.target.value)
@@ -40,12 +57,15 @@ const Homepage = () => {
 
   return(
     <>
-    <input type="text" onChange={handleInputName} value={name} />
-    <h6>Name: {name}</h6>
-    <input type="text" onChange={handleInputMessage} value={tempMessage} />
-    <h6>Message: {message}</h6>
-    <button onClick={saveMessage}>Submit Message</button>
-    <button onClick={addCount}>{count}</button>
+      <h2>WELCOME TO REACT REDUX BOILERPLATE</h2>
+      <input type="text" onChange={handleInputName} value={name} />
+      <h6>Name: {name}</h6>
+      <input type="text" onChange={handleInputMessage} value={tempMessage} />
+      <h6>Message: {message}</h6>
+      <button onClick={saveMessage}>Submit Message</button>
+      <button onClick={addCount}>{count}</button>
+      <button onClick={goTest}>Test Routing</button>
+      <button onClick={resetData}>Reset Data</button>
     </>
   )
 }

@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles/App.css';
 import Routes from './routes';
-import { withRouter } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-class App extends Component {
+const App = () => {
 
-  constructor(props){
-    super(props);
-    this.state={
-      location: this.props.location
-    }
-  }
+  const location = useLocation();
+  const [currLocation, setLocation] = useState("/")
 
-  componentWillReceiveProps(nextProps){
-    this.setState({location: nextProps.location})
-  }
+  useEffect(() => {
+    setLocation(location.pathname)
+  },[])
 
-  render() {
-    return (
-        <div>
-          <Routes location={ this.state.location.pathname }/>
-        </div>
-    );
-  }
+  useEffect(() => {
+    setLocation(location.pathname)
+  }, [location])
+
+
+  return (
+    <>
+      <Routes location={ currLocation }/>
+    </>
+  );
 }
 
-export default withRouter(App);
+export default App;

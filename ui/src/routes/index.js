@@ -1,33 +1,14 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Homepage } from '../containers/Views';
-import { connect } from 'react-redux';
+import { Homepage, TestView } from '../containers/Views';
 
-class Routes extends PureComponent{
-
-  constructor(props){
-    super(props);
-
-    this.getName = this.getName.bind(this)
-  }
-
-  getName(){
-    return this.props.client.name
-  }
-  
-  render(){
-    return(
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-      </Switch>
-    );
-  }
+const Routes = () => {
+  return(
+    <Switch>
+      <Route exact path='/' component={Homepage} />
+      <Route path='/test' component={TestView} />
+    </Switch>
+  )
 }
 
-function mapStateToProps(state){
-  return{
-    client: state.client
-  }
-}
-
-export default connect(mapStateToProps)(Routes)
+export default Routes;
