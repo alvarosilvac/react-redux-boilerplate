@@ -53,7 +53,8 @@ const Homepage = () => {
   }
 
   useEffect(() => {
-    console.log('I changed')
+    if(name)
+      console.log(`My new name is ${name}`)
   }, [name])
 
   return(

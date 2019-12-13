@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { goBack } from 'connected-react-router';
 
-const Homepage = () => {
+const TestView = () => {
 
   const dispatch = useDispatch()
 
@@ -19,4 +19,4 @@ const Homepage = () => {
   )
 }
 
-export default Homepage;
+export default TestView;
