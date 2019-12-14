@@ -1,6 +1,6 @@
-import initialState from './initialState';
+import initialState from './initialState.js';
 
-export default function clientReducer(state = initialState.data, action){
+export default function dataReducer(state = initialState.data, action){
 
   switch(action.type){
 
