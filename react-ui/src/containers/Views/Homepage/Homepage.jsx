@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMessage, increment} from '../../../actions/dataActions';
+import { setMessage, increment } from '../../../actions';
 import { push } from 'connected-react-router';
 import logo from '../../../logo.svg';
 

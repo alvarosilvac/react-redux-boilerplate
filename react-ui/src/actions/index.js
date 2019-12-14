@@ -1,5 +1,6 @@
-import data from './dataActions';
+import { increment, setMessage } from './dataActions';
 
 export {
-  data
+  increment,
+  setMessage
 }
