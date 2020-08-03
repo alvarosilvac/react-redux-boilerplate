@@ -2,13 +2,13 @@ run.server:
 	npm start
 
 run.react:
-	cd ui && npm start
+	cd react-ui && npm start
 
 install:
-	npm install && cd ui && npm install
+	npm install && cd react-ui && npm install
 
 build:
-	npm install && cd ui && npm install
+	npm install && cd react-ui && npm install
 
 clean:
-	rm -rf node_modules && cd ui && rm -rf build && rm -rf node_modules
+	rm -rf node_modules && cd react-ui && rm -rf build && rm -rf node_modules
